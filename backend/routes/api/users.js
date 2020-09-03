@@ -45,7 +45,7 @@ router.post('/register', (req, res) =>{
         }
     })
 })
-
+//post to login (public)
 router.post('/login', (req, res) =>{
     const email = req.body.email;
     const password = req.body.password;
@@ -78,6 +78,15 @@ router.post('/login', (req, res) =>{
             })
         }
     })
+})
+
+//get api/users/current (private)
+router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) =>{
+    res.json({
+        id: req.user.id,
+        name: req.user.name,
+        email: req.user.email
+    });
 })
 
 module.exports = router;
