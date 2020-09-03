@@ -34,6 +34,6 @@ module.exports = (passport) => {
             return done(null, false); 
             }
         })
-        .catch(error => console.loc(error));
+        .catch(error => console.log(error));
     }))
 }
